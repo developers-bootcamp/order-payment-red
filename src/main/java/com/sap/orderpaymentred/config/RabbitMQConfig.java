@@ -18,14 +18,17 @@ public class RabbitMQConfig {
     private String exchange;
     @Value("${rabbitmq.routing.keyPayment}")
     private String routingKey;
+
     @Bean
     public Queue queue() {
         return new Queue(queue);
     }
+
     @Bean
     public DirectExchange exchange() {
         return new DirectExchange(exchange);
     }
+
     @Bean
     public Binding binding() {
         return BindingBuilder
@@ -33,19 +36,21 @@ public class RabbitMQConfig {
                 .to(exchange())
                 .with(routingKey);
     }
+
     @Bean
-    public MessageConverter converter(){
+    public MessageConverter converter() {
         return new Jackson2JsonMessageConverter();
     }
+
     @Bean
-    public AmqpTemplate amqpTemplate(ConnectionFactory connectionFactory){
-        RabbitTemplate rabbitTemplate=new RabbitTemplate(connectionFactory);
+    public AmqpTemplate amqpTemplate(ConnectionFactory connectionFactory) {
+        RabbitTemplate rabbitTemplate = new RabbitTemplate(connectionFactory);
         rabbitTemplate.setMessageConverter(converter());
         return rabbitTemplate;
     }
+
     @Bean
-    public MessageConverter messageConverter()
-    {
+    public MessageConverter messageConverter() {
         ObjectMapper mapper = new ObjectMapper().findAndRegisterModules();
 
         return new Jackson2JsonMessageConverter(mapper);
