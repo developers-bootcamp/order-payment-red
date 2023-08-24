@@ -7,6 +7,8 @@ import com.sap.orderpaymentred.dto.CalculatorDto;
 import com.sap.orderpaymentred.dto.OrderDTO;
 import com.sap.orderpaymentred.dto.PaymentDetailsDto;
 import com.sap.orderpaymentred.mapper.OrderMapper;
+import com.sap.orderpaymentred.model.Payment;
+import com.sap.orderpaymentred.repository.PaymentRepository;
 import lombok.SneakyThrows;
 import org.mapstruct.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +24,8 @@ public class PaymentService {
     private OrderMapper orderMapper;
     @Autowired
     private RabbitMQProducer rabbitMQProducer;
+    @Autowired
+    private PaymentRepository paymentRepository;
     @Value("${bankClearingApi}")
     private String bankClearingApi;
     String url;
@@ -54,7 +58,8 @@ public class PaymentService {
                     );
                     if (status.equals("approved")) {
                         orderDTO.setOrderStatus(OrderDTO.OrderStatus.APPROVED);
-                        orderDTO.setInvoiceNumber(invoiceNumber);
+                        Payment payment=Payment.builder().orderId(orderDTO.getId()).customerId(orderDTO.getCustomerId()).paymentType(orderDTO.getPaymentType()).invoiceNumber(invoiceNumber).build();
+                        paymentRepository.save(payment);
                     } else {
                         orderDTO.setOrderStatus(OrderDTO.OrderStatus.CANCELLED);
                     }
