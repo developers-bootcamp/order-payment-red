@@ -1,0 +1,404 @@
+{
+	"info": {
+		"_postman_id": "987ea273-e3b9-4827-87c9-4e0f72d10ae8",
+		"name": "paymentServer",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28025917"
+	},
+	"item": [
+		{
+			"name": "debitEx2",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/credit",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"credit"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "debitEx2",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"paymentAmount\":1,\r\n    \"creditCardNumber\":143,\r\n    \"expireOn\":\"12/26\",\r\n    \"cvc\":222,\r\n    \"paymentType\":\"Debit\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/debit",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"debit"
+							]
+						}
+					},
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "{\r\n    \"statuse\":\"approved\",\r\n    \"invoice number\":{{$randomInt}}\r\n}"
+				},
+				{
+					"name": "creditEx2",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"payment amount\":300,\r\n    \"credit card details\":{\r\n        \"creditCardNumber\":\"4580 7528 0173 1234\",\r\n        \"expiryDate\":\"02/26\",\r\n        \"ccv\":\"741\"\r\n    },\r\n    \"action type\":\"credit\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/credit",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"credit"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "{\r\n    \"statuse\":\"aproved\",\r\n    \"invoice number\":{{$randomInt}}\r\n}"
+				},
+				{
+					"name": "creditEx3",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"payment amount\":100,\r\n    \"credit card details\":{\r\n        \"creditCardNumber\":\"4580 7528 0173 0098\",\r\n        \"expiryDate\":\"02/36\",\r\n        \"ccv\":\"576\"\r\n    },\r\n    \"action type\":\"credit\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/credit",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"credit"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "{\r\n    \"statuse\":\"aproved\",\r\n    \"invoice number\":{{$randomInt}}\r\n}"
+				},
+				{
+					"name": "creditEx4",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"paymentAmount\":1,\r\n    \"creditCardNumber\":143,\r\n    \"expireOn\":\"12/26\",\r\n    \"cvc\":222,\r\n    \"paymentType\":\"Credit\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/credit",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"credit"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "{\r\n    \"statuse\":\"approved\",\r\n    \"invoice number\":{{$randomInt}}\r\n}"
+				},
+				{
+					"name": "credit",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/credit",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"credit"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "{{url}}/credit",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"payment amount\":72,\r\n    \"credit card details\":{\r\n        \"creditCardNumber\":\"4580 7528 0173 0098\",\r\n        \"expiryDate\":\"02/25\",\r\n        \"ccv\":\"576\"\r\n    },\r\n    \"action type\":\"credit\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/credit",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"credit"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{url}}/credit",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"payment amount\":300,\r\n    \"credit card details\":{\r\n        \"creditCardNumber\":\"4580 7528 0173 1234\",\r\n        \"expiryDate\":\"02/26\",\r\n        \"ccv\":\"741\"\r\n    },\r\n    \"action type\":\"credit\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/credit",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"credit"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{url}}/credit",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"payment amount\":100,\r\n    \"credit card details\":{\r\n        \"creditCardNumber\":\"4580 7528 0173 0098\",\r\n        \"expiryDate\":\"02/36\",\r\n        \"ccv\":\"576\"\r\n    },\r\n    \"action type\":\"credit\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/credit",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"credit"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{url}}/credit",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"paymentAmount\":1,\r\n    \"creditCardNumber\":143,\r\n    \"expireOn\":\"12/26\",\r\n    \"cvc\":\"222\",\r\n    \"paymentType\":\"Credit\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/credit",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"credit"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "debitEx1",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"paymentAmount\":1,\r\n    \"creditCardNumber\":143,\r\n    \"expireOn\":\"12/26\",\r\n    \"cvc\":\"222\",\r\n    \"paymentType\":\"Debit\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://c4bed02c-6959-4265-a2fa-62c763f228a3.mock.pstmn.io/debit",
+					"protocol": "http",
+					"host": [
+						"c4bed02c-6959-4265-a2fa-62c763f228a3",
+						"mock",
+						"pstmn",
+						"io"
+					],
+					"path": [
+						"debit"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{url}}/debit",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"paymentAmount\":1,\r\n    \"creditCardNumber\":143,\r\n    \"expireOn\":\"12/26\",\r\n    \"cvc\":222,\r\n    \"paymentType\":\"Debit\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/debit",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"debit"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "https://c4bed02c-6959-4265-a2fa-62c763f228a3.mock.pstmn.io"
+		}
+	]
+}
