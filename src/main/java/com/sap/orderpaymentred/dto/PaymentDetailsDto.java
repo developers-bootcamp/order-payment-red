@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Getter
 public class PaymentDetailsDto {
-    private int paymentAmount;
+    private double totalAmount;
     private int creditCardNumber;
     private String expireOn;
     private int cvc;

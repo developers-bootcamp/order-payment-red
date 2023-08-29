@@ -29,17 +29,22 @@ public class PaymentService {
     @Value("${bankClearingApi}")
     private String bankClearingApi;
     String url;
+    OrderDTO testOrder;
 
     @SneakyThrows
     public void paymentProcess(OrderDTO orderDTO) {
-        PaymentDetailsDto paymentDetailsDto = orderMapper.OrderDtoToPaymentDetailsDto(orderDTO);
-        ObjectMapper mapper = new ObjectMapper();
-        String paymentJson = mapper.writeValueAsString(paymentDetailsDto);
         if (orderDTO.getPaymentType() == OrderDTO.PaymentType.Credit) {
             url = bankClearingApi + "/credit";
+            testOrder= new OrderDTO("A","1003",1,OrderDTO.OrderStatus.APPROVED,OrderDTO.PaymentType.Credit,143, "12/26",222);
         } else {
             url = bankClearingApi + "/debit";
+            testOrder= new OrderDTO("A","1003",1,OrderDTO.OrderStatus.APPROVED,OrderDTO.PaymentType.Debit,143, "12/26",222);
+
         }
+        PaymentDetailsDto paymentDetailsDto = orderMapper.OrderDtoToPaymentDetailsDto(testOrder);
+        ObjectMapper mapper = new ObjectMapper();
+        String paymentJson = mapper.writeValueAsString(paymentDetailsDto);
+
         WebClient.Builder builder = WebClient.builder();
         builder.build()
                 .post()
@@ -52,10 +57,6 @@ public class PaymentService {
                     System.out.println(result.toString());
                     String status = result.substring(result.indexOf(":") + 2, result.indexOf(",") - 1);
                     String invoiceNumber = result.substring(result.lastIndexOf(":") + 1, result.indexOf("}"));
-                    System.out.println(status);
-                    System.out.println(
-
-                    );
                     if (status.equals("approved")) {
                         orderDTO.setOrderStatus(OrderDTO.OrderStatus.APPROVED);
                         Payment payment=Payment.builder().orderId(orderDTO.getId()).customerId(orderDTO.getCustomerId()).paymentType(orderDTO.getPaymentType()).invoiceNumber(invoiceNumber).build();

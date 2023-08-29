@@ -29,7 +29,7 @@ public class OrderDTO {
 
     private String id;
     private  String customerId;
-    private int paymentAmount;
+    private double totalAmount;
     private OrderStatus orderStatus;
     private PaymentType paymentType;
     private int creditCardNumber;

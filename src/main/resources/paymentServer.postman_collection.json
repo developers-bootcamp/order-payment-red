@@ -40,7 +40,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"paymentAmount\":1,\r\n    \"creditCardNumber\":143,\r\n    \"expireOn\":\"12/26\",\r\n    \"cvc\":222,\r\n    \"paymentType\":\"Debit\"\r\n}",
+							"raw": "{\r\n    \"totalAmount\":1,\r\n    \"creditCardNumber\":143,\r\n    \"expireOn\":\"12/26\",\r\n    \"cvc\":222,\r\n    \"paymentType\":\"Debit\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -151,7 +151,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"paymentAmount\":1,\r\n    \"creditCardNumber\":143,\r\n    \"expireOn\":\"12/26\",\r\n    \"cvc\":222,\r\n    \"paymentType\":\"Credit\"\r\n}\r\n",
+							"raw": "{\r\n    \"totalAmount\":1,\r\n    \"creditCardNumber\":143,\r\n    \"expireOn\":\"12/26\",\r\n    \"cvc\":222,\r\n    \"paymentType\":\"Credit\"\r\n}\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -389,6 +389,72 @@
 					],
 					"path": [
 						"debit"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{url}}/debit",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"totalAmount\":1,\r\n    \"creditCardNumber\":143,\r\n    \"expireOn\":\"12/26\",\r\n    \"cvc\":222,\r\n    \"paymentType\":\"Debit\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/debit",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"debit"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{url}}/credit",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"totalAmount\":1,\r\n    \"creditCardNumber\":143,\r\n    \"expireOn\":\"12/26\",\r\n    \"cvc\":222,\r\n    \"paymentType\":\"Credit\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/credit",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"credit"
 					]
 				}
 			},
