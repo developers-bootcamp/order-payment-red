@@ -21,16 +21,19 @@ public class OrderDTO {
         CREATED,
         DONE,
     }
+    public enum  PaymentType{
+        Credit,
+        Debit,
+
+    }
 
     private String id;
     private  String customerId;
     private double totalAmount;
-    private String address;
-    private String email;
-    private String phone;
     private OrderStatus orderStatus;
+    private PaymentType paymentType;
     private int creditCardNumber;
-    private LocalDateTime expireOn;
+    private String expireOn;
     private int cvc;
 
     @Override
@@ -38,10 +41,6 @@ public class OrderDTO {
         return "OrderDTO{" +
                 "id='" + id + '\'' +
                 ", customerId='" + customerId + '\'' +
-                ", totalAmount=" + totalAmount +
-                ", address='" + address + '\'' +
-                ", email='" + email + '\'' +
-                ", phone='" + phone + '\'' +
                 ", orderStatus=" + orderStatus +
                 ", creditCardNumber=" + creditCardNumber +
                 ", expireOn=" + expireOn +
