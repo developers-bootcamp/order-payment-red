@@ -1,14 +1,14 @@
 package com.sap.orderpaymentred.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
+@Setter
 public class OrderDTO {
     public enum OrderStatus {
         NEW,
@@ -21,30 +21,20 @@ public class OrderDTO {
         CREATED,
         DONE,
     }
-    public enum  PaymentType{
+
+    public enum PaymentType {
         Credit,
         Debit,
 
     }
 
     private String id;
-    private  String customerId;
+    private String customerId;
     private double totalAmount;
     private OrderStatus orderStatus;
     private PaymentType paymentType;
-    private int creditCardNumber;
+    private String creditCardNumber;
     private String expireOn;
     private int cvc;
 
-    @Override
-    public String toString() {
-        return "OrderDTO{" +
-                "id='" + id + '\'' +
-                ", customerId='" + customerId + '\'' +
-                ", orderStatus=" + orderStatus +
-                ", creditCardNumber=" + creditCardNumber +
-                ", expireOn=" + expireOn +
-                ", cvc=" + cvc +
-                '}';
-    }
 }
