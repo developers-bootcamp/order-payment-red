@@ -22,8 +22,8 @@ public class PaymentController {
 
     @GetMapping()
     public void paymentProcess()  {
-        OrderDTO orderCredit= new OrderDTO("A","1003",1,OrderDTO.OrderStatus.APPROVED,OrderDTO.PaymentType.Credit,143, "12/26",222);
-        OrderDTO orderDebit= new OrderDTO("A","1003",1,OrderDTO.OrderStatus.APPROVED,OrderDTO.PaymentType.Debit,143, "12/26",222);
+        OrderDTO orderCredit= new OrderDTO("A","1003",1,OrderDTO.OrderStatus.APPROVED,OrderDTO.PaymentType.Credit,"143", "12/26",222);
+        OrderDTO orderDebit= new OrderDTO("A","1003",1,OrderDTO.OrderStatus.APPROVED,OrderDTO.PaymentType.Debit,"143", "12/26",222);
         paymentService.paymentProcess(orderDebit);
     }
 

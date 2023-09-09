@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @Getter
 public class PaymentDetailsDto {
     private double totalAmount;
-    private int creditCardNumber;
+    private String creditCardNumber;
     private String expireOn;
     private int cvc;
     private OrderDTO.PaymentType paymentType;
